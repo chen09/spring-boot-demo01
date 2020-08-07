@@ -22,16 +22,15 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="jp.co.tlzs.department.four.demo01.xml"  targetProject="./src/main/java">
+        <sqlMapGenerator targetPackage="jp.co.tlzs.department.four.demo01.mapper"  targetProject="./src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="jp.co.tlzs.department.four.demo01.dao"  targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="jp.co.tlzs.department.four.demo01.mapper"  targetProject="./src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <table schema="demo" tableName="user" domainObjectName="User" >
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
 
     </context>
