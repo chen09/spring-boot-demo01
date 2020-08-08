@@ -6,7 +6,8 @@
 <generatorConfiguration>
 <!--    <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
 
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://demo.chen09.xyz/demo"
                         userId="demo"
@@ -15,6 +16,7 @@
 
         <javaTypeResolver >
             <property name="forceBigDecimals" value="false" />
+            <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
 
         <javaModelGenerator targetPackage="jp.co.tlzs.department.four.demo01.model" targetProject="./src/main/java">
@@ -31,6 +33,13 @@
         </javaClientGenerator>
 
         <table schema="demo" tableName="user" domainObjectName="User" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <columnOverride column="age" javaType="java.lang.Integer"/>
+            <columnOverride column="use_flg" javaType="java.lang.Boolean"/>
+            <columnOverride column="del_flg" javaType="java.lang.Boolean"/>
+<!--            <columnOverride column="created_at" javaType="java.time.LocalDateTime"/>-->
+<!--            <columnOverride column="updated_at" javaType="java.time.LocalDateTime"/>-->
+
         </table>
 
     </context>
