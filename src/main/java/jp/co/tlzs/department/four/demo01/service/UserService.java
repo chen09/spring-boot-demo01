@@ -4,7 +4,6 @@ import jp.co.tlzs.department.four.demo01.mapper.UserMapper;
 import jp.co.tlzs.department.four.demo01.model.User;
 import jp.co.tlzs.department.four.demo01.model.UserExample;
 import org.apache.ibatis.session.RowBounds;
-import org.graalvm.compiler.lir.LIRInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +24,12 @@ public class UserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    public void update(User user) {
-        userMapper.updateByPrimaryKey(user);
+    public int createUser(User user) {
+        return userMapper.insertSelective(user);
+    }
+
+    public int updateUser(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
     }
 
     public void unuse(Integer id) {
@@ -36,15 +39,11 @@ public class UserService {
         userMapper.updateByPrimaryKey(user);
     }
 
-    public void delete(Integer id) {
+    public void deleteUser(Integer id) {
         User user = new User();
         user.setId(id);
         user.setDelFlg(true);
-        userMapper.updateByPrimaryKey(user);
-    }
-
-    public void insert(User user) {
-        userMapper.insertSelective(user);
+        userMapper.updateByPrimaryKeySelective(user);
     }
 
 
