@@ -35,9 +35,11 @@
 
         <table schema="demo" tableName="user" domainObjectName="User" >
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="age" javaType="java.lang.Integer"/>
-            <columnOverride column="use_flg" javaType="java.lang.Boolean"/>
-            <columnOverride column="del_flg" javaType="java.lang.Boolean"/>
+            <columnOverride column="age" javaType="java.lang.Integer" />
+            <columnOverride column="use_flg" javaType="java.lang.Boolean" />
+            <columnOverride column="del_flg" javaType="java.lang.Boolean" />
+<!--            <ignoreColumn column="created_at" />-->
+<!--            <ignoreColumn column="updated_at" />-->
 <!--            <columnOverride column="created_at" javaType="java.time.LocalDateTime"/>-->
 <!--            <columnOverride column="updated_at" javaType="java.time.LocalDateTime"/>-->
 
