@@ -46,26 +46,20 @@ public class UserController {
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PATCH)
     public int updateUser(@PathVariable int id, @RequestBody Map map) {
-        User user = new User();
+        map.put("id", id);
+        return userService.updateUser(map);
+    }
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+    public int updateUser(@PathVariable int id, @RequestBody User user) {
         user.setId(id);
-
-        if (map.containsKey("name")) {
-            user.setName((String) map.get("name"));
-        }
-        if (map.containsKey("age")) {
-            user.setAge((Integer) map.get("age"));
-        }
-
-        System.out.println(user);
-        return 0;
-//        user.setId(id);
-//        user.setUseFlg(null);
-//        user.setDelFlg(null);
-//        user.setCreatedAt(null);
-//        user.setCreatedUserId(null);
-//        user.setUpdatedAt(null);
-//        user.setUpdatedUserId(null);
-//        return userService.updateUser(user);
+        user.setUseFlg(null);
+        user.setDelFlg(null);
+        user.setCreatedAt(null);
+        user.setCreatedUserId(null);
+        user.setUpdatedAt(null);
+        user.setUpdatedUserId(null);
+        return userService.updateUser(user);
     }
 
 }

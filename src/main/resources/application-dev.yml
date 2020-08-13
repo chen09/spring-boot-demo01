@@ -1,8 +1,11 @@
 
 spring:
-  profiles:
-    active: local
+  spring:
+    profiles: dev
   datasource:
+    url: jdbc:mysql://demo.chen09.xyz/demo
+    username: demo
+    password: demo1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #mybatis:
