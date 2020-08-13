@@ -31,7 +31,6 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<!--这里定义package.environment这个变量-->
 				<package.environment>dev</package.environment>
 			</properties>
 			<activation>
@@ -104,18 +103,16 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<!--①-->
 				<excludes>
 					<exclude>application*.yml</exclude>
 				</excludes>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
-				<!--②-->
 				<filtering>true</filtering>
 				<includes>
 					<include>application.yml</include>
-					<include>application-${profile.active}.yml</include>
+					<include>application-${package.environment}.yml</include>
 				</includes>
 			</resource>
 		</resources>
