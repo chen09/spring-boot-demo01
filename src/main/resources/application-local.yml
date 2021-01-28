@@ -1,9 +1,10 @@
 
 spring:
-  profiles:
-    active: ${package.environment}
+  profiles: local
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/demo
+    username: demo
+    password: demo1234
 
 #mybatis:
 #  typeAliasesPackage: jp.co.tlzs.department.four.demo01.model
