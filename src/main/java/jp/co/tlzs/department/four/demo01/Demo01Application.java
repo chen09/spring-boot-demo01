@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("jp.co.tlzs.department.four.demo01.mapper")
 //@MapperScan("com.kfit.*.mapper")
 public class Demo01Application {
-
 	public static void main(String[] args) {
 		System.out.println("test");
 		SpringApplication.run(Demo01Application.class, args);
