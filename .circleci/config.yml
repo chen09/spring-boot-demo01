@@ -1,26 +1,23 @@
-version: 2.1
-
-orbs:
-  maven: circleci/maven@1.1.0
-  aws-s3: circleci/aws-s3@2.0.0
-
-workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
+jobs:
+  build:
+    docker:
+      - image: 'cimg/python:3.6'
+    steps:
+      - checkout
+      - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
       - aws-s3/sync:
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-access-key-id: AKIAZKKU5262ET4MLKN3
-          aws-region: ap-northeast-1
-          aws-secret-access-key: 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
-          from: target
+          aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+          aws-region: AWS_REGION_BLUE
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
+          from: bucket
           to: 's3://pcr-chen-test-bucket/target'
-#      - aws-s3/copy:
-#          arguments: '--dryrun'
-#          aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-#          aws-region: AWS_REGION_BLUE
-#          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-#          from: bucket/build_asset.txt
-#          to: 's3://my-s3-bucket-name'
+      - aws-s3/copy:
+          arguments: '--dryrun'
+          from: bucket/build_asset.txt
+          to: 's3://pcr-chen-test-bucket/target'
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+version: 2.1
